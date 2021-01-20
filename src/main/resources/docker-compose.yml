@@ -1,0 +1,24 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:latest
+    cap_add:
+      - CAP_SYS_NICE
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+      # Where our data will be persisted
+    volumes:
+      - ./my-db:/var/lib/mysql
+      - ./static:/docker-entrypoint-initdb.d
+volumes:
+  my-db:
