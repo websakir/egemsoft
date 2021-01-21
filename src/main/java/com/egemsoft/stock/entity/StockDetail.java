@@ -1,8 +1,12 @@
 package com.egemsoft.stock.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Data
@@ -13,7 +17,9 @@ public class StockDetail {
     private int id;
     private int sembolid;
     private String sembol;
-    private LocalDateTime tarih;
+    private int state;
+    private double increase;
+    private Date tarih;
     private int sektorid;
     private float alis;
     private float satis;

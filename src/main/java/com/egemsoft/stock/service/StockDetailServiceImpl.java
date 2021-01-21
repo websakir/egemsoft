@@ -7,9 +7,7 @@ import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class StockDetailServiceImpl implements StockDetailService {
@@ -19,7 +17,41 @@ public class StockDetailServiceImpl implements StockDetailService {
 
     @Override
     public void saveStockDetail(StockDetail stockDetail) {
-            stockDetailRepository.save(stockDetail);
+
+            if(stockDetail == null){
+                return;
+            }
+
+            StockDetail currStockDetail =  stockDetailRepository.findByStateAndSembolid(0, stockDetail.getSembolid());
+
+            if(currStockDetail == null){
+                stockDetailRepository.save(stockDetail);
+                return;
+            }
+
+            if (currStockDetail.getTarih().compareTo(stockDetail.getTarih()) != 0) {
+                double changePercentage = calculatePercentage(stockDetail.getAlis(), currStockDetail.getAlis());
+
+                currStockDetail.setState(1);
+                stockDetailRepository.save(currStockDetail);
+                stockDetail.setIncrease(changePercentage);
+                stockDetailRepository.save(stockDetail);
+            }
+    }
+
+    @Override
+    public long getAllStockDetailsAlisSum() {
+
+        List<StockDetail> stockDetails =  stockDetailRepository.findAll();
+
+        long totalSum = 0;
+
+
+        
+
+
+
+        return totalSum;
     }
 
     @Override
@@ -43,10 +75,19 @@ public class StockDetailServiceImpl implements StockDetailService {
         return changeDiagrams;
     }
 
+    @Override
+    public Map<String, List<StockDetail>> getStockDetailGraph() {
+
+        Map<String, List<StockDetail>> diagram = new HashMap<>();
+        diagram.put("asc", stockDetailRepository.findAllByStateOrderByIncreaseAsc(0));
+        diagram.put("desc", stockDetailRepository.findAllByStateOrderByIncreaseDesc(0));
+        return diagram;
+    }
+
 
     public double calculatePercentage(double currAlis, double prevAlis){
         double diff = currAlis - prevAlis;
-        return round(diff/prevAlis, 6)*100;
+        return round((diff/prevAlis) *100, 6);
     }
 
 
