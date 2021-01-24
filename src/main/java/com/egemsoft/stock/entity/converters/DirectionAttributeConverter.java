@@ -1,4 +1,6 @@
-package com.egemsoft.stock.dto;
+package com.egemsoft.stock.entity.converters;
+
+import com.egemsoft.stock.entity.enums.Direction;
 
 import javax.persistence.AttributeConverter;
 

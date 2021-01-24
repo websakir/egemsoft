@@ -1,4 +1,4 @@
-package com.egemsoft.stock.dto;
+package com.egemsoft.stock.entity.enums;
 
 public enum Direction {
     REQUEST("REQUEST"),

@@ -1,17 +1,24 @@
 package com.egemsoft.stock.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
+
+/**
+ * Stock details  entity mapped to db table
+ */
+
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name="stock_details")
+@Table(name = "stock_details")
 public class StockDetail {
     @Id
     private int id;
@@ -21,55 +28,55 @@ public class StockDetail {
     private double increase;
     private Date tarih;
     private int sektorid;
-    private float alis;
-    private float satis;
-    private float acilis;
-    private float yuksek;
-    private float yukseK1;
-    private float yukseK2;
-    private float dusuk;
-    private float dusuK1;
-    private float dusuK2;
-    private float kapanis;
-    private float kapaniS1;
-    private float kapaniS2;
+    private double alis;
+    private double satis;
+    private double acilis;
+    private double yuksek;
+    private double yukseK1;
+    private double yukseK2;
+    private double dusuk;
+    private double dusuK1;
+    private double dusuK2;
+    private double kapanis;
+    private double kapaniS1;
+    private double kapaniS2;
     private int hacimlot;
     private int hacimloT1;
     private int hacimloT2;
-    private float aort;
-    private float aorT1;
-    private float aorT2;
+    private double aort;
+    private double aorT1;
+    private double aorT2;
     private long hacimtldun;
     private int hacimtl;
     private int hacimtL1;
     private int hacimtL2;
-    private float hacimyuzdedegisim;
-    private float dunkukapanis;
-    private float oncekikapanis;
-    private float izafikapanis;
-    private float tavan;
-    private float taban;
-    private float yilyuksek;
-    private float yildusuk;
-    private float ayyuksek;
-    private float aydusuk;
-    private float haftayuksek;
-    private float haftadusuk;
-    private float oncekiyilkapanis;
-    private float oncekiaykapanis;
-    private float oncekihaftakapanis;
-    private float yilortalama;
+    private double hacimyuzdedegisim;
+    private double dunkukapanis;
+    private double oncekikapanis;
+    private double izafikapanis;
+    private double tavan;
+    private double taban;
+    private double yilyuksek;
+    private double yildusuk;
+    private double ayyuksek;
+    private double aydusuk;
+    private double haftayuksek;
+    private double haftadusuk;
+    private double oncekiyilkapanis;
+    private double oncekiaykapanis;
+    private double oncekihaftakapanis;
+    private double yilortalama;
     private double ayortalama;
     private double haftaortalama;
-    private float yuzdedegisimS1;
-    private float yuzdedegisimS2;
-    private float yuzdedegisim;
-    private float fiyatadimi;
+    private double yuzdedegisimS1;
+    private double yuzdedegisimS2;
+    private double yuzdedegisim;
+    private double fiyatadimi;
     private int kaykar;
     private long sermaye;
-    private float saklamaor;
+    private double saklamaor;
     private long netkar;
-    private float net;
+    private double net;
     private int fiyatkaz;
     private long piydeg;
     private double kapanisfark;

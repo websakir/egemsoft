@@ -1,13 +1,19 @@
 package com.egemsoft.stock.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
+/**
+ * Company entity mapped to db table
+ */
 @Entity
 @Data
 @Table(name="companies")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Company {
 
     @Id

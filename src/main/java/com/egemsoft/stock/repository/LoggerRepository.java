@@ -1,4 +1,4 @@
-package com.egemsoft.stock.dao;
+package com.egemsoft.stock.repository;
 
 import com.egemsoft.stock.entity.Logger;
 import org.springframework.data.jpa.repository.JpaRepository;

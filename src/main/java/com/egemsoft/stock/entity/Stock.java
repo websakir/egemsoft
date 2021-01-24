@@ -2,6 +2,9 @@ package com.egemsoft.stock.entity;
 
 import lombok.Data;
 
+/**
+ * Stock message
+ */
 @Data
 public class Stock {
     private StockDetail hisseYuzeysel;

@@ -10,7 +10,7 @@ import java.util.Date;
  * stock detail dto object with interest
  */
 @Data
-public class ChangeDiagramDTO {
+public class InterestChangeDTO {
 
     private int id;
     private String sembol;
