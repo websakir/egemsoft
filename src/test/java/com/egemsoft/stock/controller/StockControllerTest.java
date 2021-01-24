@@ -61,8 +61,11 @@ class StockControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/hisseler/"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.header().string(HttpHeaders.LOCATION, "/api/v1/hisseler/"))
 
+        .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(3)))
+        .andExpect(MockMvcResultMatchers.jsonPath("$[0].id", Matchers.is(1)))
+        .andExpect(MockMvcResultMatchers.jsonPath("$[1].id", Matchers.is(2)))
+        .andExpect(MockMvcResultMatchers.jsonPath("$[2].id", Matchers.is(3)))
                 ;
 
 
