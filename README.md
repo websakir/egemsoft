@@ -1,3 +1,3 @@
 # egemsoft
-WARNING!!! Please start up databse first
+WARNING!!! Please start up database first
 "docker-compose up -d"
