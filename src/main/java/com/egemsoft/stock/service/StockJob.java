@@ -50,7 +50,7 @@ public class StockJob {
      * Job method run on start and every on @fixedDelay time
      * Getting companies list, calling stock APIs by compnies and persisting them into db
      */
-    @Scheduled(initialDelay = 1000, fixedDelay = 180000)
+    @Scheduled(initialDelay = 1000, fixedDelay = 1800000)
     public void getAllStockes() {
         logger.info("Job Scheduler started at " + new Date());
         logger.debug("hisseler URL " + stockListUrl);
