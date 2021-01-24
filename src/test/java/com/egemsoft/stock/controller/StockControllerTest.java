@@ -9,6 +9,7 @@ import com.egemsoft.stock.service.StockDetailService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -55,12 +56,12 @@ class StockControllerTest {
 
         Sort.Order order = new Sort.Order(Sort.Direction.ASC, "id");
         Pageable paging = PageRequest.of(0, 3);
-        Mockito.doReturn(new PageImpl<>(Arrays.asList(company1, company2, company3))).when(companyService).findAllCompanies(paging);
+        Mockito.doReturn(new PageImpl<>(Arrays.asList(company1, company2, company3))).when(companyService).findAllCompanies(ArgumentMatchers.any());
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/hisseler/"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-//                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(MockMvcResultMatchers.header().string(HttpHeaders.LOCATION, "/hisseler/")
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.header().string(HttpHeaders.LOCATION, "/api/v1/hisseler/"))
 
                 ;
 
